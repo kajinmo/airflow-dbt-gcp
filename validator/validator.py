@@ -3,25 +3,25 @@ from typing import List
 from pydantic import ValidationError
 from .schema import DailyEngagement
 
-class DailyEngagementValidator:
-    def __init__(self, path: str):
-        self.path = path
-        self.df = None
-        self.registros_validados: List[DailyEngagement] = []
+class EngagementValidator:
+    def __init__(self, df: pd.DataFrame):
+        self.df = df
+        self.valid_records: List[DailyEngagement] = []
+        self.errors: List[dict] = []
 
-    def carregar_csv(self) -> pd.DataFrame:
-        self.df = pd.read_csv(self.path)
-        return self.df
-
-    def validar(self) -> List[DailyEngagement]:
-        if self.df is None:
-            raise ValueError("CSV não carregado. Execute `carregar_csv` antes.")
-        
+    def validate(self) -> List[DailyEngagement]:
+        """Validate all records in the DataFrame"""
         for idx, row in self.df.iterrows():
             try:
-                registro = DailyEngagement(**row.to_dict())
-                self.registros_validados.append(registro)
+                record = DailyEngagement(**row.to_dict())
+                self.valid_records.append(record)
             except ValidationError as e:
-                print(f"Erro de validação na linha {idx}: {e}")
-        
-        return self.registros_validados
+                self._log_error(idx, e)
+        return self.valid_records
+
+    def _log_error(self, row_index: int, error: ValidationError):
+        self.errors.append({
+            "row": row_index,
+            "error": str(error),
+            "data": self.df.iloc[row_index].to_dict()
+        })
