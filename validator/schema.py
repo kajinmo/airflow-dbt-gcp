@@ -13,16 +13,20 @@ class DailyEngagement(BaseModel):
     view_end_time: Optional[datetime]
     region: Optional[str]
 
+
     @field_validator("user_id", "video_id", "category")
     def validate_required_fields(cls, value, field):
         if not value or not str(value).strip():
-            raise ValueError(f"{field.name} cannot be empty")
+            raise ValueError(f"{field} cannot be empty")
         return value
 
+
     @field_validator("region")
-    def validate_region_length(cls, value):
-        if value and len(value) != 2:
-            raise ValueError("Region must be 2 characters")
+    def validate_region(cls, value):
+        if value is None:
+            return value
+        if len(value) != 2 or not value.isalpha() or not value.isupper():
+            raise ValueError("Region must be 2 uppercase letters (e.g., 'US', 'BR')")
         return value
 
 

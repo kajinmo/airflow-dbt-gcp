@@ -21,6 +21,8 @@ pythonpath = ["."]
 [tool.taskipy.tasks]
 run = "docker-compose up -d"
 kill = "docker-compose down -v"
+test = "pytest tests/test_validator_raw.py -v"
+test_all = "pytest tests/ -v"
 #test = "docker-compose up -d --build && sleep 5 && pytest -v tests/tests.py && docker-compose down"
 
 #run = "docker-compose up -d && sleep 5 && uvicorn app.main:app --reload"
