@@ -5,8 +5,24 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "pandas>=2.2.3",
     "pydantic>=2.11.4",
     "pytest>=8.3.5",
+    "python-dotenv>=1.1.0",
+    "slack-sdk>=3.35.0",
     "sqlalchemy>=2.0.40",
     "taskipy>=1.14.1",
 ]
+
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+
+[tool.taskipy.tasks]
+run = "docker-compose up -d"
+kill = "docker-compose down -v"
+#test = "docker-compose up -d --build && sleep 5 && pytest -v tests/tests.py && docker-compose down"
+
+#run = "docker-compose up -d && sleep 5 && uvicorn app.main:app --reload"
+#kill = "docker-compose down -v"
+#test = "docker-compose up -d --build && sleep 5 && pytest -v tests/tests.py && docker-compose down"
