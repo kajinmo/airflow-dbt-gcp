@@ -176,7 +176,6 @@ pyrightconfig.json
 # End of https://www.toptal.com/developers/gitignore/api/python
 service_account.json
 anotacoes.md
-/include
 /logs
 docker-compose.yml
 

@@ -1,5 +1,5 @@
 import logging
-from config import Config
+from include.services.config import Config
 from utils.file_handlers import get_most_recent_filepath, read_data_file
 from validator.validator import EngagementValidator
 from services.slack_notifier import SlackNotifier
