@@ -12,23 +12,23 @@ Ok
 - GCP - Salvar o json e renomear
 - Pydantic - Criar regras de Validação
 - BotSlack - Criar Bot para mandar mensagem
-- pegar o arquivo mais recente
-- ler o arquivo csv
-
-Em Andamento
+- Pegar o arquivo mais recente da pasta data
+- Ler o arquivo csv e aplicar a validação
 - incorporar logging
 - incorporar unit testing
 - incorporar mensagem de erro no slack
-- criar dockerfile (instalar bibliotecas dentro do docker / funciona bem com uv / arquivo csv dentro do docker)
+
+Em Andamento
+- criar dockerfile (instalar bibliotecas dentro do docker / uv / arquivo csv dentro do docker)
 - Arrumar as variaveis de ambiente no docker-compose
+- Construir a DAG
 - GCP - Subir o csv para o bucket gcs
 - criar o dataset no bigquery
 - gcs-to-raw 
-- Construir a DAG
 - Construir o conector no airflow com as credenciais do GCP
 
 parte 2: dbt
-- ver conteúdo osbre dbt
+- conteúdo dbt
 - Inserir validação de dados entre as camadas
 - Definir as mensagens de erro para o BotSlack
 - fazer a apresentação
