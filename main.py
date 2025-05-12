@@ -1,8 +1,8 @@
 import logging
 from include.services.config import Config
-from utils.file_handlers import get_most_recent_filepath, read_data_file
-from validator.validator import EngagementValidator
-from services.slack_notifier import SlackNotifier
+from include.utils.file_handlers import get_most_recent_filepath, read_data_file
+from include.validator.validator import EngagementValidator
+from include.services.slack_notifier import SlackNotifier
 
 data_directory = Config.DATA_DIR
 file_extension = 'csv'

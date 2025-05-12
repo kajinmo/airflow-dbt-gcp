@@ -13,6 +13,8 @@ class Config:
     SLACK_CHANNEL = os.getenv('SLACK_CHANNEL', '#alerts')
     DATA_DIR = 'include/data/'
     LOG_FILE = 'logs/engagement_processor.log'
+    GCP_PROJECT_ID= os.getenv('GCP_PROJECT_ID')
+    GCP_BUCKET_NAME = os.getenv('GCP_BUCKET_NAME')
 
 if not Config.SLACK_TOKEN:
     raise ValueError("Missing SLACK_TOKEN in environment variables")

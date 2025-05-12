@@ -5,7 +5,10 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
-    "pandas>=2.2.0,<3.0",
+    "apache-airflow-providers-google==10.24.0",
+    "google-cloud-storage>=1.32.0,<3.0.0",
+    "pandas>=2.1.2,<2.2.0",
+    "pyarrow>=20.0.0",
     "pydantic>=2.0,<3.0",
     "pytest>=8.0,<9.0",
     "python-dotenv>=0.21.0,<0.22.0",
@@ -23,8 +26,3 @@ run = "docker-compose up -d"
 kill = "docker-compose down -v"
 test = "pytest tests/test_validator_raw.py -v"
 test_all = "pytest tests/ -v"
-#test = "docker-compose up -d --build && sleep 5 && pytest -v tests/tests.py && docker-compose down"
-
-#run = "docker-compose up -d && sleep 5 && uvicorn app.main:app --reload"
-#kill = "docker-compose down -v"
-#test = "docker-compose up -d --build && sleep 5 && pytest -v tests/tests.py && docker-compose down"

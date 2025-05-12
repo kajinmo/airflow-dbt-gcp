@@ -32,3 +32,5 @@ parte 2: dbt
 - Inserir validação de dados entre as camadas
 - Definir as mensagens de erro para o BotSlack
 - fazer a apresentação
+
+FROM astrocrpublic.azurecr.io/runtime:12.9.0

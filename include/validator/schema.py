@@ -9,12 +9,12 @@ class DailyEngagement(BaseModel):
     user_id: str
     video_id: str
     category: str
-    view_start_time: Optional[datetime]
-    view_end_time: Optional[datetime]
-    region: Optional[str]
+    view_start_time: datetime
+    view_end_time: datetime
+    region: str
 
 
-    @field_validator("user_id", "video_id", "category")
+    @field_validator("user_id", "video_id", "category", "view_start_time", "view_end_time", "region")
     def validate_required_fields(cls, value, field):
         if not value or not str(value).strip():
             raise ValueError(f"{field} cannot be empty")
